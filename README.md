@@ -1,15 +1,16 @@
 ### Date created
-Include the date you created this project and README file.
+2019-10-18
 
 ### Project Title
-Replace the Project Title
+pdsnd_github
 
 ### Description
-Describe what your project is about and what it does
+This project is the validation of the 3rd project of programming for data science
+at Udacity
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Udacity
 
