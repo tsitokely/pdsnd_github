@@ -7,6 +7,12 @@ CITY_DATA = {'chicago': 'chicago.csv',
              'washington': 'washington.csv'}
 
 
+def separator(size):
+    if size.lower() =='big':
+        print('-' * 40)
+    elif size.lower() =='little':
+        print('-' * 20)
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -31,7 +37,7 @@ def get_filters():
                 break
             else:
                 print('Error: you did not type a correct city name:\ninput:"{}"\n'.format(city))
-        print('-' * 20)
+        separator('little')
 
         # get user input for month (all, january, february, ... , june)
         # use a while loop to ensure the right input for the variable month
@@ -47,7 +53,7 @@ def get_filters():
                 break
             else:
                 print('Error: you did not type a correct month name:\ninput:"{}"\n'.format(month))
-        print('-' * 20)
+        separator('little')
 
         # get user input for day of week (all, monday, tuesday, ... sunday)
         # use a while loop to ensure the right input for the variable day
@@ -62,13 +68,13 @@ def get_filters():
                 break
             else:
                 print('Error: you did not type a correct day name:\ninput:"{}"\n'.format(day))
-        print('-' * 20)
+        separator('little')
             
         if load_data(city, month, day).empty:
             print('There is no data in the selection, please choose a valid data with valid month name or day name')
             print('input= city:', city, ' month: ', month, 'day: ', day)
             print('You are required to choose a new dataset\n')
-            print('*' * 40)
+            separator('big')
             prompt = input("--Please type a key to continue--\n")
         else:
             break
@@ -133,7 +139,7 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
 
-    print('-' * 40)
+    separator('big')
     prompt = input("--Please type a key to continue--\n")
 
 
@@ -158,7 +164,7 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
 
-    print('-' * 40)
+    separator('big')
     prompt = input("--Please type a key to continue--\n")
 
 
@@ -176,7 +182,7 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
 
-    print('-' * 40)
+    separator('big')
     prompt = input("--Please type a key to continue--\n")
 
 
@@ -189,15 +195,15 @@ def user_stats(df):
 
     # Display counts of user types
     print("Printing the count for types...")
-    print("-" * 50, '\n')
+    separator('big')
     print(pd.DataFrame(df['User Type'].value_counts()))
-    print("-" * 10)
+    separator('little')
     prompt = input("--Please type a key to continue--\n")
 
     # Display counts of gender
     try:
         print("Printing the count for gender...")
-        print("-" * 50, '\n')
+        separator('big')
         print(pd.DataFrame(df['Gender'].value_counts()))
     except KeyError:
         print("There's no Gender column in the selected dataset ")
@@ -206,18 +212,18 @@ def user_stats(df):
     # Display earliest, most recent, and most common year of birth
     try:
         print("Printing the statistics for year of birth...")
-        print("-" * 50, '\n')
+        separator('big')
         print("The earliest year of birth is: {}".format(int(df['Birth Year'].min())))
         print("The most recent year of birth is: {}".format(int(df['Birth Year'].max())))
         print("The most common year of birth is: {}".format(int(df['Birth Year'].mode())))
     except KeyError:
         print("There's no Birth Year column in the selected dataset ")
-    print("-" * 30, '\n')
+    separator('big')
     print("\nThis took %s seconds." % (time.time() - start_time))
 
     prompt = input("--Please type a key to continue--\n")
 
-    print('-' * 40)
+    separator('big')
 
 
 def display_raw_data(df):
