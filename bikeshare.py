@@ -127,15 +127,15 @@ def time_stats(df):
     start_time = time.time()
     
     # display the most common month
-    print("The most common month in the selected data is:", df['month'].mode()[0])
+    print("The most common month in the selected data is: {}".format(df['month'].mode()[0]))
 
     # display the most common day of week
-    print("The most common day of week in the selected data is:", df['day'].mode()[0])
+    print("The most common day of week in the selected data is: {}".format(df['day'].mode()[0]))
 
     # display the most common start hour
     # for that purpose, an extract of the hour from start time is required first
     df['hour'] = df['Start Time'].dt.hour
-    print("The most common start hour in the selected data is:", df['hour'].mode()[0])
+    print("The most common start hour in the selected data is: {}".format(df['hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
 
@@ -151,16 +151,16 @@ def station_stats(df):
     start_time = time.time()
 
     # display most commonly used start station
-    print("The most commonly used start station in the selected data is:", df['Start Station'].mode()[0])
+    print("The most commonly used start station in the selected data is: {}".format(df['Start Station'].mode()[0]))
 
     # display most commonly used end station
-    print("The most commonly used end station in the selected data is:", df['End Station'].mode()[0])
+    print("The most commonly used end station in the selected data is: {}".format(df['End Station'].mode()[0]))
 
     # display most frequent combination of start station and end station trip
     # for that purpose, we need to concatenate the start and end station
     df['start and end station'] = df['Start Station'] + ' -> ' + df['End Station']
-    print("The most frequent combination of start station and end station trip in the selected data is:",
-          df['start and end station'].mode()[0])
+    print("The most frequent combination of start station and end station trip in the selected data is:{}".format(
+          df['start and end station'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
 
